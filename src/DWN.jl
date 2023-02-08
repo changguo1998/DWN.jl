@@ -740,7 +740,7 @@ function freqspec2timeseries(u::Array{Vector{T}}, npts::Int = 0;
     end
     amp = @. exp(2 * π * (0:npts-1) / npts) * npts
     t = zeros(ComplexF64, npts)
-    w = Array{Vector{Float64},3}(undef, size(u))
+    w = Array{Vector{Float64},ndims(u)}(undef, size(u))
     for i in eachindex(u)
         w[i] = zeros(npts)
         freqspec2timeseries!(w[i], u[i], amp, t, stf)
