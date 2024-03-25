@@ -675,7 +675,7 @@ function dwn(inputModel::AbstractMatrix, hypocentralDepth::Real,faultLength::Rea
 end
 
 """
-dwn(inputModel, hypocentralDepth, faultLength, receiver, receiverDepth, npts, dt, maxSeriesOrder=10000)
+dwn(inputModel, hypocentralDepth, faultLength, receiver, receiverDepth, npts::Integer, dt, maxSeriesOrder=10000)
 
 calculate Green function of each station
 
@@ -689,13 +689,13 @@ calculate Green function of each station
     dt
     maxSeriesOrder default 10000
 """
-function dwn(inputModel, hypocentralDepth, faultLength, receiver, receiverDepth, npts, dt, maxSeriesOrder::Int = 10000)
+function dwn(inputModel, hypocentralDepth, faultLength, receiver, receiverDepth, npts::Integer, dt::Real, maxSeriesOrder::Int = 10000)
     xl = maximum(inputModel[:, 2]) * npts * dt + maximum(map(v->v[1], receiver))
     return dwn(inputModel, hypocentralDepth, faultLength, receiver, receiverDepth, npts, dt, xl, dt, maxSeriesOrder)
 end
 
 """
-dwn(inputModel, hypocentralDepth, faultLength, receiver, receiverDepth, tl, dt, maxSeriesOrder=10000)
+dwn(inputModel, hypocentralDepth, faultLength, receiver, receiverDepth, tl::Float, dt, maxSeriesOrder=10000)
 
 calculate Green function of each station
 
@@ -709,7 +709,7 @@ calculate Green function of each station
     dt
     maxSeriesOrder default 10000
 """
-function dwn(inputModel, hypocentralDepth, faultLength, receiver, receiverDepth, tl, dt, maxSeriesOrder::Int = 10000)
+function dwn(inputModel, hypocentralDepth, faultLength, receiver, receiverDepth, tl::AbstractFloat, dt::Real, maxSeriesOrder::Int = 10000)
     npts = round(Int, tl/dt)
     npts += mod(npts, 2)
     xl = maximum(inputModel[:, 2]) * npts * dt + maximum(map(v->v[1], receiver))
