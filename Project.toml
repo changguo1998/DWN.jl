@@ -1,6 +1,6 @@
 name = "DWN"
 uuid = "cd0201ce-641d-4930-81fb-47a2ab5929d7"
-authors = ["guochang <dkxygc@mail.ustc.edu.cn>"]
+authors = ["Chang Guo <changguo1998@gmail.com>"]
 version = "0.1.0"
 
 [deps]
